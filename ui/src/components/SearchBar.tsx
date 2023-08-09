@@ -23,6 +23,7 @@ export const SearchBar = ({ value = '', onChange }: Props) => {
 			type='search'
 			size='small'
 			label='Search'
+			margin='none'
 			value={searchTerm}
 			onChange={handleChange}
 			InputProps={{
