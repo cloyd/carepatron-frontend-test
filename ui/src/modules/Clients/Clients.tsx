@@ -43,11 +43,12 @@ const Clients = () => {
 				Clients
 			</Typography>
 
-			<Stack direction='row' justifyContent='space-between' alignItems='flex-start' spacing={2}>
+			<Stack direction='row' justifyContent='space-between' alignItems='center' spacing={2}>
 				<SearchBar value={searchQuery} onChange={setSearchQuery} />
 				<Button
 					data-testid='create-client-button'
 					variant='contained'
+					size='medium'
 					startIcon={<PersonAddIcon />}
 					onClick={handleOpen}
 				>
