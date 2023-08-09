@@ -73,6 +73,7 @@ I have included Cypress tests to cover various aspects of the application, inclu
 - Clients features
 
   - Client List Component
+
     ✅ should display correct columns
 
     ✅ should display a loading indicator (Skeleton) while waiting for an API request
