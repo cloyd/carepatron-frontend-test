@@ -24,7 +24,7 @@ export const useCreateClient = () => {
 			// Optimistically update to the new value
 			// TODO: Fix me
 			// @ts-expect-error
-			queryClient.setQueryData(['clients'], (old: IClient) => [...old, newClient]);
+			queryClient.setQueryData(['clients'], (old: IClient) => [newClient, ...old]);
 
 			// Return a context object with the snapshotted value
 			return { previousClients };
