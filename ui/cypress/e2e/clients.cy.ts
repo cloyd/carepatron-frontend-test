@@ -161,7 +161,7 @@ describe('Clients features', () => {
 				cy.contains('Invalid email address');
 			});
 
-			it.only('should validate whitespaces', () => {
+			it('should validate whitespaces', () => {
 				cy.get('@createButton').click();
 				cy.get('[data-testid="submit-client-button"]').as('submitButton');
 
