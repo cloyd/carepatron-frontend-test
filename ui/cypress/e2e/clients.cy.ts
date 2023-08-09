@@ -122,7 +122,7 @@ describe('Clients features', () => {
 			cy.get('button').contains('Back').should('not.exist');
 		});
 
-		it.only('should change the submit button label from next to submit when in contact details step', () => {
+		it('should change the submit button label from next to submit when in contact details step', () => {
 			cy.visit('/');
 			cy.get('@createButton').click();
 			cy.get('[data-testid="submit-client-button"]').as('submitButton');

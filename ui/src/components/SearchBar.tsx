@@ -29,6 +29,7 @@ export const SearchBar = ({ value = '', onChange }: Props) => {
 				inputProps={{
 					'data-testid': 'search-input',
 					'aria-label': 'search input',
+					type: 'search',
 				}}
 			/>
 			<IconButton type='button' sx={{ p: '10px' }} aria-label='search'>

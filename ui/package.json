@@ -30,8 +30,8 @@
 	"scripts": {
 		"start": "craco start",
 		"build": "craco build",
-		"test": "craco test",
-		"test:open": "cypress open"
+		"test": "cypress run",
+		"test:open": "cypress open --e2e --browser chrome"
 	},
 	"eslintConfig": {
 		"extends": [
