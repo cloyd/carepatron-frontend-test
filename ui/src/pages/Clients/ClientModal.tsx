@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import {
 	Button,
@@ -42,6 +42,7 @@ export type FormValues = z.infer<typeof FormSchema>;
 
 export const ClientModal = ({ isOpen, handleClose }: Props) => {
 	const { mutate, isLoading, isSuccess, data } = useCreateClient();
+	const [snackBarOpen, setSnackBarOpen] = useState(false);
 
 	const form = useForm<FormValues>({
 		mode: 'onBlur',
@@ -52,7 +53,6 @@ export const ClientModal = ({ isOpen, handleClose }: Props) => {
 	const { formState, reset } = form;
 
 	const onSubmit = (values: FormValues) => {
-		console.log('values', values);
 		mutate(values);
 	};
 
@@ -61,6 +61,7 @@ export const ClientModal = ({ isOpen, handleClose }: Props) => {
 			console.log('handle close');
 			reset();
 			handleClose();
+			setSnackBarOpen(true);
 		}
 	}, [handleClose, isSuccess, isLoading, formState.isSubmitSuccessful, reset]);
 
@@ -92,7 +93,8 @@ export const ClientModal = ({ isOpen, handleClose }: Props) => {
 			</Dialog>
 
 			<Snackbar
-				open={!isLoading && isSuccess}
+				open={snackBarOpen}
+				onClose={() => setSnackBarOpen(false)}
 				autoHideDuration={6000}
 				anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
 			>
