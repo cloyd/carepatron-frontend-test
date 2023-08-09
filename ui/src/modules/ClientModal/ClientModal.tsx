@@ -48,7 +48,7 @@ export const ClientModal = ({ isOpen, handleClose }: Props) => {
 		if (formState.isSubmitSuccessful && !isLoading && isSuccess) {
 			setSnackBarOpen(true);
 		}
-	}, [handleClose, isSuccess, isLoading, formState.isSubmitSuccessful, reset]);
+	}, [isSuccess, isLoading, formState.isSubmitSuccessful]);
 
 	return (
 		<div>
