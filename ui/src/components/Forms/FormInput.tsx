@@ -5,6 +5,8 @@ type Props = {
 	name: string;
 } & TextFieldProps;
 
+const kebabCase = (str: string) => str.replace(/[A-Z]/g, (letter) => `-${letter.toLowerCase()}`);
+
 export const FormInput = ({ name, ...otherProps }: Props) => {
 	const { field, fieldState } = useController({
 		name,
@@ -24,6 +26,9 @@ export const FormInput = ({ name, ...otherProps }: Props) => {
 			inputRef={field.ref} // send input ref, so we can focus on input when error appear
 			error={!!fieldState?.error?.message}
 			helperText={fieldState?.error ? fieldState?.error?.message : ''}
+			inputProps={{
+				'data-testid': `${kebabCase(name)}-input`,
+			}}
 		/>
 	);
 };

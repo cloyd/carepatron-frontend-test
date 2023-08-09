@@ -86,7 +86,9 @@ const Stepper = ({ onSubmit }: Props) => {
 						</Button>
 					)}
 					<Box sx={{ flex: '1 1 auto' }} />
-					<Button onClick={handleNext}>{activeStep === steps.length - 1 ? 'Create client' : 'Next'}</Button>
+					<Button data-testid='submit-client-button' onClick={handleNext}>
+						{activeStep === steps.length - 1 ? 'Create client' : 'Next'}
+					</Button>
 				</Box>
 			</Fragment>
 		</Box>

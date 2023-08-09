@@ -51,14 +51,14 @@ export const ClientModal = ({ isOpen, handleClose }: Props) => {
 	}, [isSuccess, isLoading, formState.isSubmitSuccessful]);
 
 	return (
-		<div>
+		<div data-testid='client-modal'>
 			<Dialog fullWidth maxWidth='sm' open={isOpen} onClose={handleClose}>
 				<FormProvider {...form}>
 					<form id='create-client-form' onSubmit={form.handleSubmit(onSubmit)} noValidate>
 						<Box display='flex' justifyContent='space-between'>
 							<DialogTitle>Create new client</DialogTitle>
 							<Box p='16px 24px'>
-								<IconButton aria-label='Close' onClick={handleClose}>
+								<IconButton data-testid='close-modal-button' aria-label='Close' onClick={handleClose}>
 									<CloseIcon />
 								</IconButton>
 							</Box>

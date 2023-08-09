@@ -33,6 +33,9 @@ export const SearchBar = ({ value = '', onChange }: Props) => {
 					</InputAdornment>
 				),
 			}}
+			inputProps={{
+				'data-testid': 'search-input',
+			}}
 		/>
 	);
 };

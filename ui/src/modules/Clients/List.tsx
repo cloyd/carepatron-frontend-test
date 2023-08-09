@@ -15,30 +15,32 @@ type Props = {
 };
 
 export const List = ({ isLoading, clients = [] }: Props) => (
-	<TableContainer component={Paper} sx={{ maxWidth: '100%' }}>
-		<MaterialTable sx={{ minWidth: 400 }} aria-label='clients-table'>
-			<TableHead>
-				<TableRow>
-					<TableCell>Name</TableCell>
-					<TableCell>Phone number</TableCell>
-					<TableCell>Email</TableCell>
-				</TableRow>
-			</TableHead>
-			<TableBody>
-				{isLoading ? (
-					<PlaceholderRow />
-				) : clients.length === 0 ? (
-					<TableRow sx={{ padding: 3 }}>
-						<TableCell component='th' scope='row'>
-							No clients
-						</TableCell>
+	<div data-testid='client-list'>
+		<TableContainer component={Paper} sx={{ maxWidth: '100%' }}>
+			<MaterialTable sx={{ minWidth: 400 }} aria-label='clients-table'>
+				<TableHead>
+					<TableRow>
+						<TableCell>Name</TableCell>
+						<TableCell>Phone number</TableCell>
+						<TableCell>Email</TableCell>
 					</TableRow>
-				) : (
-					clients.map((client) => <Row key={client.id} client={client} />)
-				)}
-			</TableBody>
-		</MaterialTable>
-	</TableContainer>
+				</TableHead>
+				<TableBody>
+					{isLoading ? (
+						<PlaceholderRow />
+					) : clients.length === 0 ? (
+						<TableRow sx={{ padding: 3 }}>
+							<TableCell component='th' scope='row'>
+								No clients
+							</TableCell>
+						</TableRow>
+					) : (
+						clients.map((client) => <Row key={client.id} client={client} />)
+					)}
+				</TableBody>
+			</MaterialTable>
+		</TableContainer>
+	</div>
 );
 
 export default List;

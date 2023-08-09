@@ -45,7 +45,12 @@ const Clients = () => {
 
 			<Stack direction='row' justifyContent='space-between' alignItems='flex-start' spacing={2}>
 				<SearchBar value={searchQuery} onChange={setSearchQuery} />
-				<Button variant='contained' startIcon={<PersonAddIcon />} onClick={handleOpen}>
+				<Button
+					data-testid='create-client-button'
+					variant='contained'
+					startIcon={<PersonAddIcon />}
+					onClick={handleOpen}
+				>
 					Create Client
 				</Button>
 			</Stack>
