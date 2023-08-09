@@ -1,22 +1,13 @@
 import { useEffect, useState } from 'react';
 
-import {
-	Button,
-	Stack,
-	Dialog,
-	DialogActions,
-	DialogContent,
-	DialogContentText,
-	DialogTitle,
-	Snackbar,
-	Alert,
-} from '@mui/material';
+import { Dialog, DialogContent, DialogTitle, Snackbar, Alert } from '@mui/material';
 
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import { useCreateClient } from '@app/hooks';
-import { FormInput } from '@app/components/Forms';
+
+import Stepper from './Stepper';
 
 import { FormValues, FormSchema, defaultValues } from './constants';
 
@@ -64,26 +55,13 @@ export const ClientModal = ({ isOpen, handleClose }: Props) => {
 					<form id='create-client-form' onSubmit={form.handleSubmit(onSubmit)} noValidate>
 						<DialogTitle>Create new client</DialogTitle>
 						<DialogContent>
-							<DialogContentText>render stepper here</DialogContentText>
-
-							<Stack spacing={2}>
-								<FormInput name='firstName' label='First name' />
-								<FormInput name='lastName' label='Last name' />
-							</Stack>
-							<Stack spacing={2}>
-								<FormInput name='email' label='Email' type='email' />
-								<FormInput name='phoneNumber' label='PhoneNumber' />
-							</Stack>
+							<Stepper onSubmit={form.handleSubmit(onSubmit)} />
 						</DialogContent>
-						<DialogActions>
-							<Button type='submit' disabled={isLoading}>
-								Create client
-							</Button>
-						</DialogActions>
 					</form>
 				</FormProvider>
 			</Dialog>
 
+			{/* TODO: Move snackbar to its own component */}
 			<Snackbar
 				open={snackBarOpen}
 				onClose={handleCloseSnackBar}
