@@ -1,9 +1,11 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+
 import './App.css';
 import DataProvider from './store/DataProvider';
 import Clients from './pages/Clients';
 import QueryProvider from './util/QueryProvider';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 export default function App() {
 	return (
@@ -15,6 +17,7 @@ export default function App() {
 						<Route path='/Clients' element={<Clients />} />
 					</Routes>
 				</DataProvider>
+				<ReactQueryDevtools />
 			</QueryProvider>
 		</div>
 	);
