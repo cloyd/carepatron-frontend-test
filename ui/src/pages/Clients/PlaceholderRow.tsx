@@ -14,15 +14,15 @@ export const PlaceholderRow = () => (
 	>
 		<TableCell component='th' scope='row'>
 			<div style={{ display: 'flex', gap: '0.5rem' }}>
-				<Skeleton variant='text' width={100} height={20} />
-				<Skeleton variant='text' width={100} height={20} />
+				<Skeleton variant='text' width={60} height={20} />
+				<Skeleton variant='text' width={50} height={20} />
 			</div>
 		</TableCell>
 		<TableCell>
-			<Skeleton variant='text' width={120} height={20} />
+			<Skeleton variant='text' width={110} height={20} />
 		</TableCell>
 		<TableCell>
-			<Skeleton variant='text' width={180} height={20} />
+			<Skeleton variant='text' width={160} height={20} />
 		</TableCell>
 	</TableRow>
 );
