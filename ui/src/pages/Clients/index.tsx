@@ -1,11 +1,8 @@
 import { memo } from 'react';
 import { Paper, Typography } from '@mui/material';
 
-// import Page from '@app/components/Page';
-// import { useClients } from '@app/hooks';
-
-import Page from '../../components/Page';
-import { useClients } from '../../hooks';
+import Page from '@app/components/Page';
+import { useClients } from '@app/hooks';
 
 import ClientTable from './ClientTable';
 
