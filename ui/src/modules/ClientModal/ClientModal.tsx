@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
-import { Dialog, DialogContent, DialogTitle, Snackbar, Alert } from '@mui/material';
+import { Dialog, DialogContent, DialogTitle, Snackbar, Alert, IconButton, Box, Button } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -53,7 +54,15 @@ export const ClientModal = ({ isOpen, handleClose }: Props) => {
 			<Dialog fullWidth maxWidth='sm' open={isOpen} onClose={handleClose}>
 				<FormProvider {...form}>
 					<form id='create-client-form' onSubmit={form.handleSubmit(onSubmit)} noValidate>
-						<DialogTitle>Create new client</DialogTitle>
+						<Box display='flex' justifyContent='space-between'>
+							<DialogTitle>Create new client</DialogTitle>
+							<Box p='16px 24px'>
+								<IconButton aria-label='Close' onClick={handleClose}>
+									<CloseIcon />
+								</IconButton>
+							</Box>
+						</Box>
+
 						<DialogContent>
 							<Stepper onSubmit={form.handleSubmit(onSubmit)} />
 						</DialogContent>

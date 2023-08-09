@@ -47,7 +47,7 @@ const Stepper = ({ onSubmit }: Props) => {
 	};
 
 	return (
-		<Box my={2} sx={{ width: '100%' }}>
+		<Box sx={{ width: '100%' }}>
 			<MaterialStepper activeStep={activeStep}>
 				{steps.map((label) => {
 					const stepProps: { completed?: boolean } = {};
