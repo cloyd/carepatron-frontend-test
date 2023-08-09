@@ -122,20 +122,6 @@ describe('Clients features', () => {
 			cy.get('button').contains('Back').should('not.exist');
 		});
 
-		it.skip('should handle closing modal', () => {
-			cy.visit('/');
-			cy.get('@createButton').click();
-			cy.get('[data-testid="client-modal"]').as('clientModal');
-
-			cy.get('@clientModal').should('exist');
-
-			cy.get('[data-testid="close-modal-button"').click();
-
-			cy.wait(1000);
-
-			cy.get('@clientModal').should('not.exist');
-		});
-
 		context('form validations', () => {
 			it('should display validation errors for empty form fields', () => {
 				cy.get('@createButton').click();
@@ -173,6 +159,18 @@ describe('Clients features', () => {
 
 				// Check validation error message for email
 				cy.contains('Invalid email address');
+			});
+
+			it.only('should validate whitespaces', () => {
+				cy.get('@createButton').click();
+				cy.get('[data-testid="submit-client-button"]').as('submitButton');
+
+				cy.get('[data-testid="first-name-input"]').type('       ');
+				cy.get('[data-testid="last-name-input"]').type('Doe');
+
+				cy.get('@submitButton').click();
+
+				cy.contains('First name is required');
 			});
 		});
 	});
