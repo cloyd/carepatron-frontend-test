@@ -1,6 +1,7 @@
 import axios, { AxiosRequestConfig, Method } from 'axios';
 
-const API_URL = process.env.API_URL || 'http://localhost:5044';
+// const API_URL = process.env.API_URL || 'http://localhost:5044';
+const API_URL = 'https://carepatron-test-mock-api.vercel.app';
 
 export function apiGet<T>(uri: string): Promise<T> {
 	return api<T>(uri, 'get', undefined);
