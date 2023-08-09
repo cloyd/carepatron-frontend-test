@@ -2,19 +2,15 @@ import { memo } from 'react';
 import { Paper, Typography } from '@mui/material';
 
 // import Page from '@app/components/Page';
+// import { useClients } from '@app/hooks';
+
 import Page from '../../components/Page';
+import { useClients } from '../../hooks';
+
 import ClientTable from './ClientTable';
 
-function Clients() {
-	const clients: IClient[] = [
-		{
-			id: '123',
-			firstName: 'lorem',
-			lastName: 'ipsum',
-			email: 'loremipsum@carepatron.com',
-			phoneNumber: '+6192099102',
-		},
-	];
+const Clients = () => {
+	const { data, isLoading } = useClients();
 
 	return (
 		<Page>
@@ -22,10 +18,10 @@ function Clients() {
 				Clients
 			</Typography>
 			<Paper sx={{ margin: 'auto', marginTop: 3 }}>
-				<ClientTable clients={clients} />
+				{isLoading ? 'Loading...' : <ClientTable clients={data as IClient[]} />}
 			</Paper>
 		</Page>
 	);
-}
+};
 
 export default memo(Clients);
