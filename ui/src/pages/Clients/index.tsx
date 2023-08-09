@@ -15,7 +15,7 @@ const Clients = () => {
 				Clients
 			</Typography>
 			<Paper sx={{ margin: 'auto', marginTop: 3 }}>
-				{isLoading ? 'Loading...' : <ClientTable clients={data as IClient[]} />}
+				<ClientTable isLoading={isLoading} clients={data as IClient[]} />
 			</Paper>
 		</Page>
 	);
