@@ -14,34 +14,19 @@ import {
 
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
 
 import { useCreateClient } from '@app/hooks';
 import { FormInput } from '@app/components/Forms';
+
+import { FormValues, FormSchema, defaultValues } from './constants';
 
 type Props = {
 	isOpen: boolean;
 	handleClose: () => void;
 };
 
-const defaultValues = {
-	firstName: '',
-	lastName: '',
-	email: '',
-	phoneNumber: '',
-};
-
-const FormSchema = z.object({
-	firstName: z.string().min(1, { message: 'First name is required' }),
-	lastName: z.string().min(1, { message: 'Last name is required' }),
-	email: z.string().min(1, { message: 'Email is required' }).email({ message: 'Invalid email address' }),
-	phoneNumber: z.string().min(1, { message: 'Phone number is required' }),
-});
-
-export type FormValues = z.infer<typeof FormSchema>;
-
 export const ClientModal = ({ isOpen, handleClose }: Props) => {
-	const { mutate, isLoading, isSuccess, data } = useCreateClient();
+	const { mutate, isLoading, isSuccess } = useCreateClient();
 	const [snackBarOpen, setSnackBarOpen] = useState(false);
 
 	const form = useForm<FormValues>({

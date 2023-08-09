@@ -1,10 +1,10 @@
 import { TableCell, TableRow } from '@mui/material';
 
-export interface IProps {
+export type Props = {
 	client: IClient;
-}
+};
 
-export default function ClientListItem({ client }: IProps) {
+const Row = ({ client }: Props) => {
 	const { id, firstName, lastName, email, phoneNumber } = client;
 
 	return (
@@ -25,4 +25,6 @@ export default function ClientListItem({ client }: IProps) {
 			<TableCell>{email}</TableCell>
 		</TableRow>
 	);
-}
+};
+
+export default Row;

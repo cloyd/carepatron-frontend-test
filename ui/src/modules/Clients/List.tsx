@@ -1,4 +1,4 @@
-import Table from '@mui/material/Table';
+import MaterialTable from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
@@ -6,7 +6,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
-import ClientRow from './ClientRow';
+import Row from './Row';
 import PlaceholderRow from './PlaceholderRow';
 
 type Props = {
@@ -14,9 +14,9 @@ type Props = {
 	isLoading: boolean;
 };
 
-export const ClientTable = ({ isLoading, clients = [] }: Props) => (
+export const List = ({ isLoading, clients = [] }: Props) => (
 	<TableContainer component={Paper} sx={{ maxWidth: '100%' }}>
-		<Table sx={{ minWidth: 400 }} aria-label='clients-table'>
+		<MaterialTable sx={{ minWidth: 400 }} aria-label='clients-table'>
 			<TableHead>
 				<TableRow>
 					<TableCell>Name</TableCell>
@@ -34,11 +34,11 @@ export const ClientTable = ({ isLoading, clients = [] }: Props) => (
 						</TableCell>
 					</TableRow>
 				) : (
-					clients.map((client) => <ClientRow key={client.id} client={client} />)
+					clients.map((client) => <Row key={client.id} client={client} />)
 				)}
 			</TableBody>
-		</Table>
+		</MaterialTable>
 	</TableContainer>
 );
 
-export default ClientTable;
+export default List;

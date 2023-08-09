@@ -4,11 +4,10 @@ import PersonAddIcon from '@mui/icons-material/PersonAdd';
 
 import Page from '@app/components/Page';
 import SearchBar from '@app/components/SearchBar';
-
 import { useClients } from '@app/hooks/useClients';
+import ClientModal from '@app/modules/ClientModal';
 
-import ClientTable from './ClientTable';
-import ClientModal from './ClientModal';
+import List from './List';
 
 const Clients = () => {
 	const { data, isLoading } = useClients();
@@ -52,7 +51,7 @@ const Clients = () => {
 			</Stack>
 
 			<Paper sx={{ margin: 'auto', marginTop: 3 }}>
-				<ClientTable isLoading={isLoading} clients={filteredClients || []} />
+				<List isLoading={isLoading} clients={filteredClients || []} />
 			</Paper>
 
 			<ClientModal isOpen={isModalOpen} handleClose={handleClose} />
