@@ -56,11 +56,18 @@ export const ClientModal = ({ isOpen, handleClose }: Props) => {
 		mutate(values);
 	};
 
+	const handleCloseSnackBar = (_event: React.SyntheticEvent | Event, reason?: string) => {
+		if (reason === 'clickaway') {
+			return;
+		}
+
+		setSnackBarOpen(false);
+	};
+
 	useEffect(() => {
 		if (formState.isSubmitSuccessful && !isLoading && isSuccess) {
-			console.log('handle close');
-			reset();
 			handleClose();
+			reset();
 			setSnackBarOpen(true);
 		}
 	}, [handleClose, isSuccess, isLoading, formState.isSubmitSuccessful, reset]);
@@ -94,11 +101,11 @@ export const ClientModal = ({ isOpen, handleClose }: Props) => {
 
 			<Snackbar
 				open={snackBarOpen}
-				onClose={() => setSnackBarOpen(false)}
+				onClose={handleCloseSnackBar}
 				autoHideDuration={6000}
 				anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
 			>
-				<Alert severity='success' sx={{ width: '100%' }}>
+				<Alert onClose={handleCloseSnackBar} severity='success' sx={{ width: '100%' }}>
 					Successfully added new client
 				</Alert>
 			</Snackbar>
