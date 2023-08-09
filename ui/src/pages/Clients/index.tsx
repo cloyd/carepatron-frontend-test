@@ -1,5 +1,7 @@
 import { memo } from 'react';
 import { Paper, Typography } from '@mui/material';
+
+// import Page from '@app/components/Page';
 import Page from '../../components/Page';
 import ClientTable from './ClientTable';
 

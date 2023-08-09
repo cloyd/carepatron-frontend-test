@@ -1,9 +1,11 @@
-import React from "react";
+import React from 'react';
 
-export default function Page({ children }: { children?: React.ReactNode }) {
-  return (
-    <div style={{ margin: "auto", marginTop: 24, maxWidth: "700px" }}>
-      {children}
-    </div>
-  );
-}
+import './Page.css';
+
+type Props = {
+	children?: React.ReactNode;
+};
+
+export const Page = ({ children }: Props) => <div className='page'>{children}</div>;
+
+export default Page;
