@@ -122,6 +122,21 @@ describe('Clients features', () => {
 			cy.get('button').contains('Back').should('not.exist');
 		});
 
+		it.only('should change the submit button label from next to submit when in contact details step', () => {
+			cy.visit('/');
+			cy.get('@createButton').click();
+			cy.get('[data-testid="submit-client-button"]').as('submitButton');
+
+			cy.get('@submitButton').should('contain.text', 'Next');
+
+			cy.get('[data-testid="first-name-input"]').type('lorem');
+			cy.get('[data-testid="last-name-input"]').type('ipsum');
+
+			cy.get('@submitButton').click();
+
+			cy.get('@submitButton').should('contain.text', 'Create client');
+		});
+
 		context('form validations', () => {
 			it('should display validation errors for empty form fields', () => {
 				cy.get('@createButton').click();
