@@ -1,19 +1,23 @@
 import { useEffect } from 'react';
 
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import Snackbar from '@mui/material/Snackbar';
-import Alert from '@mui/material/Alert';
+import {
+	Button,
+	Stack,
+	Dialog,
+	DialogActions,
+	DialogContent,
+	DialogContentText,
+	DialogTitle,
+	Snackbar,
+	Alert,
+} from '@mui/material';
 
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 
 import { useCreateClient } from '@app/hooks';
+import { FormInput } from '@app/components/Forms';
 
 type Props = {
 	isOpen: boolean;
@@ -34,7 +38,7 @@ const FormSchema = z.object({
 	phoneNumber: z.string().min(1, { message: 'Phone number is required' }),
 });
 
-type FormValues = z.infer<typeof FormSchema>;
+export type FormValues = z.infer<typeof FormSchema>;
 
 export const ClientModal = ({ isOpen, handleClose }: Props) => {
 	const { mutate, isLoading, isSuccess, data } = useCreateClient();
@@ -48,7 +52,8 @@ export const ClientModal = ({ isOpen, handleClose }: Props) => {
 	const { formState, reset } = form;
 
 	const onSubmit = (values: FormValues) => {
-		// mutate(values);
+		console.log('values', values);
+		mutate(values);
 	};
 
 	useEffect(() => {
@@ -68,7 +73,14 @@ export const ClientModal = ({ isOpen, handleClose }: Props) => {
 						<DialogContent>
 							<DialogContentText>render stepper here</DialogContentText>
 
-							<div>render form here</div>
+							<Stack spacing={2}>
+								<FormInput name='firstName' label='First name' />
+								<FormInput name='lastName' label='Last name' />
+							</Stack>
+							<Stack spacing={2}>
+								<FormInput name='email' label='Email' type='email' />
+								<FormInput name='phoneNumber' label='PhoneNumber' />
+							</Stack>
 						</DialogContent>
 						<DialogActions>
 							<Button type='submit' disabled={isLoading}>
