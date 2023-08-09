@@ -31,6 +31,9 @@ export const ClientModal = ({ isOpen, handleClose }: Props) => {
 
 	const onSubmit = (values: FormValues) => {
 		mutate(values);
+		// Optimistic update
+		handleClose();
+		reset();
 	};
 
 	const handleCloseSnackBar = (_event: React.SyntheticEvent | Event, reason?: string) => {
@@ -43,8 +46,6 @@ export const ClientModal = ({ isOpen, handleClose }: Props) => {
 
 	useEffect(() => {
 		if (formState.isSubmitSuccessful && !isLoading && isSuccess) {
-			handleClose();
-			reset();
 			setSnackBarOpen(true);
 		}
 	}, [handleClose, isSuccess, isLoading, formState.isSubmitSuccessful, reset]);
