@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, ChangeEvent } from 'react';
 
 import { InputAdornment, TextField } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
@@ -11,7 +11,7 @@ type Props = {
 export const SearchBar = ({ value = '', onChange }: Props) => {
 	const [searchTerm, setSearchTerm] = useState(value);
 
-	const handleChange = (event: any) => {
+	const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
 		const value = event.target.value;
 		setSearchTerm(value);
 		onChange(value);
