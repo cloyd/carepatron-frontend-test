@@ -187,6 +187,23 @@ describe('Clients features', () => {
 
 				cy.contains('First name is required');
 			});
+
+			it.only('should display validation error for invalid phone number format', () => {
+				cy.get('@createButton').click();
+				cy.get('[data-testid="submit-client-button"]').as('submitButton');
+
+				cy.get('[data-testid="first-name-input"]').type('Lorem');
+				cy.get('[data-testid="last-name-input"]').type('Doe');
+
+				cy.get('@submitButton').click();
+
+				cy.get('[data-testid="email-input"]').type('lorem.ipsum@example.com');
+				cy.get('[data-testid="phone-number-input"]').type('invalidnumber912837');
+
+				cy.get('@submitButton').click();
+
+				cy.contains('Invalid phone number format');
+			});
 		});
 	});
 });
