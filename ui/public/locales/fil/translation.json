@@ -1,0 +1,22 @@
+{
+	"language": "Filipino",
+	"client": "Kliyente",
+	"createClient": "Lumikha ng Kliyente",
+	"searchClient": "Maghanap ng kliyente",
+	"noClient": "Walang kliyente",
+	"next": "Susunod",
+	"back": "Bumalik",
+	"firstName": "Pangalan",
+	"lastName": "Huling pangalan",
+	"name": "Pangalan",
+	"phoneNumber": "Numero ng telepono",
+	"email": "Email",
+	"modal": {
+		"title": "Lumikha ng bagong kliyente",
+		"steps": {
+			"1": "Personal na detalye",
+			"2": "Mga detalye ng contact"
+		},
+		"sucessMessage": "Matagumpay na naidagdag ang bagong kliyente"
+	}
+}

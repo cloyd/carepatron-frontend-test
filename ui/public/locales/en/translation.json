@@ -1,0 +1,22 @@
+{
+	"language": "English",
+	"client": "Client",
+	"createClient": "Create Client",
+	"searchClient": "Search client",
+	"noClient": "No client",
+	"next": "Next",
+	"back": "Back",
+	"firstName": "First name",
+	"lastName": "Last name",
+	"name": "Name",
+	"phoneNumber": "Phone number",
+	"email": "Email",
+	"modal": {
+		"title": "Create new client",
+		"steps": {
+			"1": "Personal details",
+			"2": "Contact details"
+		},
+		"sucessMessage": "Successfully added new client"
+	}
+}

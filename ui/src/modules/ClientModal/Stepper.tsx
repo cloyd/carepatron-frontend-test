@@ -1,5 +1,6 @@
-import { useState, Fragment, ReactNode } from 'react';
+import { useMemo, useState, Fragment, ReactNode } from 'react';
 import { useFormContext } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 
 import Box from '@mui/material/Box';
 import MaterialStepper from '@mui/material/Stepper';
@@ -15,8 +16,6 @@ type FormFields = {
 	[index: number]: string[];
 };
 
-const steps = ['Personal details', 'Contact details'];
-
 const formFields: FormFields = {
 	0: ['firstName', 'lastName'],
 	1: ['email', 'phoneNumber'],
@@ -27,6 +26,10 @@ type Props = {
 };
 
 const Stepper = ({ onSubmit }: Props) => {
+	const { t } = useTranslation();
+
+	const steps = useMemo(() => [t('modal.steps.1'), t('modal.steps.2')], [t]);
+
 	const { trigger } = useFormContext();
 	const [activeStep, setActiveStep] = useState(0);
 	const isFinalStep = activeStep + 1 === steps.length;
@@ -66,15 +69,15 @@ const Stepper = ({ onSubmit }: Props) => {
 				<Box px={2} py={4}>
 					{activeStep === 0 && (
 						<Stack spacing={2}>
-							<FormInput name='firstName' label='First name' />
-							<FormInput name='lastName' label='Last name' />
+							<FormInput name='firstName' label={t('firstName')} />
+							<FormInput name='lastName' label={t('lastName')} />
 						</Stack>
 					)}
 
 					{activeStep === 1 && (
 						<Stack spacing={2}>
-							<FormInput name='email' label='Email' type='email' />
-							<FormInput name='phoneNumber' label='PhoneNumber' />
+							<FormInput name='email' label={t('email')} type='email' />
+							<FormInput name='phoneNumber' label={t('phoneNumber')} />
 						</Stack>
 					)}
 				</Box>
@@ -82,12 +85,12 @@ const Stepper = ({ onSubmit }: Props) => {
 				<Box sx={{ display: 'flex', flexDirection: 'row' }}>
 					{activeStep !== 0 && (
 						<Button color='primary' onClick={handleBack} startIcon={<ArrowBackIcon />}>
-							Back
+							{t('back')}
 						</Button>
 					)}
 					<Box sx={{ flex: '1 1 auto' }} />
 					<Button data-testid='submit-client-button' onClick={handleNext}>
-						{activeStep === steps.length - 1 ? 'Create client' : 'Next'}
+						{activeStep === steps.length - 1 ? t('createClient') : t('next')}
 					</Button>
 				</Box>
 			</Fragment>

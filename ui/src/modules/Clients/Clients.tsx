@@ -1,6 +1,7 @@
 import { memo, useMemo, useState, useCallback } from 'react';
 import { Button, Paper, Typography, Stack } from '@mui/material';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import { useTranslation } from 'react-i18next';
 
 import Page from '@app/components/Page';
 import SearchBar from '@app/components/SearchBar';
@@ -10,6 +11,7 @@ import ClientModal from '@app/modules/ClientModal';
 import List from './List';
 
 const Clients = () => {
+	const { t } = useTranslation();
 	const { data, isLoading } = useClients();
 
 	const [searchQuery, setSearchQuery] = useState('');
@@ -40,7 +42,7 @@ const Clients = () => {
 	return (
 		<Page>
 			<Typography variant='h4' className='title'>
-				Clients
+				{t('client')}
 			</Typography>
 
 			<Stack direction='row' justifyContent='space-between' alignItems='center' spacing={2}>
@@ -52,7 +54,7 @@ const Clients = () => {
 					startIcon={<PersonAddIcon />}
 					onClick={handleOpen}
 				>
-					Create Client
+					{t('createClient')}
 				</Button>
 			</Stack>
 

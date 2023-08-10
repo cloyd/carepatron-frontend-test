@@ -1,0 +1,22 @@
+{
+	"language": "French",
+	"client": "Client",
+	"createClient": "Créer un client",
+	"searchClient": "Rechercher un client",
+	"noClient": "Aucun client",
+	"next": "Suivante",
+	"back": "Dos",
+	"firstName": "Prénom",
+	"lastName": "Nom de famille",
+	"name": "Nom",
+	"phoneNumber": "Numéro de téléphone",
+	"email": "E-mail",
+	"modal": {
+		"title": "Créer un nouveau client",
+		"steps": {
+			"1": "Détails personnels",
+			"2": "Détails du contact"
+		},
+		"sucessMessage": "Nouveau client ajouté avec succès"
+	}
+}

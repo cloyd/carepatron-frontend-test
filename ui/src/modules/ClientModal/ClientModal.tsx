@@ -1,10 +1,9 @@
 import { useEffect, useState, useCallback, memo } from 'react';
-
 import { Dialog, DialogContent, DialogTitle, Snackbar, Alert, IconButton, Box } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useTranslation } from 'react-i18next';
 
 import { useCreateClient } from '@app/hooks';
 
@@ -18,6 +17,8 @@ type Props = {
 };
 
 export const ClientModal = ({ isOpen, handleClose }: Props) => {
+	const { t } = useTranslation();
+
 	const { mutate, isLoading, isSuccess } = useCreateClient();
 
 	const [snackBarOpen, setSnackBarOpen] = useState(false);
@@ -61,7 +62,7 @@ export const ClientModal = ({ isOpen, handleClose }: Props) => {
 				<FormProvider {...form}>
 					<form id='create-client-form' onSubmit={form.handleSubmit(onSubmit)} noValidate>
 						<Box display='flex' justifyContent='space-between'>
-							<DialogTitle>Create new client</DialogTitle>
+							<DialogTitle>{t('createClient')}</DialogTitle>
 							<Box p='16px 24px'>
 								<IconButton data-testid='close-modal-button' aria-label='Close' onClick={handleClose}>
 									<CloseIcon />

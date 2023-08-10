@@ -1,4 +1,5 @@
 import { useState, ChangeEvent } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import SearchIcon from '@mui/icons-material/Search';
 import Paper from '@mui/material/Paper';
@@ -11,7 +12,11 @@ type Props = {
 };
 
 export const SearchBar = ({ value = '', onChange }: Props) => {
+	const { t } = useTranslation();
+
 	const [searchTerm, setSearchTerm] = useState(value);
+
+	const placeholder = `${t('searchClient')}...`;
 
 	const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
 		const value = event.target.value;
@@ -25,7 +30,7 @@ export const SearchBar = ({ value = '', onChange }: Props) => {
 				sx={{ ml: 2, flex: 1 }}
 				value={searchTerm}
 				onChange={handleChange}
-				placeholder='Search client...'
+				placeholder={placeholder}
 				inputProps={{
 					'data-testid': 'search-input',
 					'aria-label': 'search input',
