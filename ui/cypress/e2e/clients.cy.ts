@@ -102,6 +102,8 @@ describe('Clients features', () => {
 
 			// Check if the client list contains the expected results
 			cy.get('@list').should('contain', 'Cloyd Bilog');
+			cy.get('@list').should('not.contain', 'John Stevens');
+			cy.get('@list').should('not.contain', 'Steven Smith');
 		});
 
 		it('should go back to personal details when back button is click', () => {
@@ -122,7 +124,7 @@ describe('Clients features', () => {
 			cy.get('button').contains('Back').should('not.exist');
 		});
 
-		it('should change the submit button label from next to submit when in contact details step', () => {
+		it('should change the submit button label from next to Create client when in contact details step', () => {
 			cy.visit('/');
 			cy.get('@createButton').click();
 			cy.get('[data-testid="submit-client-button"]').as('submitButton');
@@ -188,7 +190,7 @@ describe('Clients features', () => {
 				cy.contains('First name is required');
 			});
 
-			it.only('should display validation error for invalid phone number format', () => {
+			it('should display validation error for invalid phone number format', () => {
 				cy.get('@createButton').click();
 				cy.get('[data-testid="submit-client-button"]').as('submitButton');
 

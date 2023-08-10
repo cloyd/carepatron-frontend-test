@@ -9,5 +9,3 @@ export const useClients = (): UseClients =>
 		queryKey: ['clients'],
 		queryFn: getClients,
 	});
-
-export default useClients;

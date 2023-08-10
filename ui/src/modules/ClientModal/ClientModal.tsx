@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, memo } from 'react';
 
 import { Dialog, DialogContent, DialogTitle, Snackbar, Alert, IconButton, Box, Button } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
@@ -86,4 +86,4 @@ export const ClientModal = ({ isOpen, handleClose }: Props) => {
 	);
 };
 
-export default ClientModal;
+export default memo(ClientModal);

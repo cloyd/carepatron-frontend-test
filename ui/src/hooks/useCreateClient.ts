@@ -40,5 +40,3 @@ export const useCreateClient = () => {
 		},
 	});
 };
-
-export default useCreateClient;

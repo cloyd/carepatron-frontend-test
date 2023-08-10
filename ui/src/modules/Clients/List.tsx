@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 import MaterialTable from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -43,4 +45,4 @@ export const List = ({ isLoading, clients = [] }: Props) => (
 	</div>
 );
 
-export default List;
+export default memo(List);
