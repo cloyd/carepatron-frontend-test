@@ -9,6 +9,7 @@ import { useClients } from '@app/hooks/useClients';
 import ClientModal from '@app/modules/ClientModal';
 
 import List from './List';
+import LocaleSelector from '@app/components/Locale/LocaleSelector';
 
 const Clients = () => {
 	const { t } = useTranslation();
@@ -63,6 +64,8 @@ const Clients = () => {
 			</Paper>
 
 			<ClientModal isOpen={isModalOpen} handleClose={handleClose} />
+
+			<LocaleSelector />
 		</Page>
 	);
 };
