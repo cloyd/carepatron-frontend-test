@@ -1,6 +1,6 @@
-import { useEffect, useState, memo } from 'react';
+import { useEffect, useState, useCallback, memo } from 'react';
 
-import { Dialog, DialogContent, DialogTitle, Snackbar, Alert, IconButton, Box, Button } from '@mui/material';
+import { Dialog, DialogContent, DialogTitle, Snackbar, Alert, IconButton, Box } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 
 import { useForm, FormProvider } from 'react-hook-form';
@@ -19,6 +19,7 @@ type Props = {
 
 export const ClientModal = ({ isOpen, handleClose }: Props) => {
 	const { mutate, isLoading, isSuccess } = useCreateClient();
+
 	const [snackBarOpen, setSnackBarOpen] = useState(false);
 
 	const form = useForm<FormValues>({
@@ -32,9 +33,13 @@ export const ClientModal = ({ isOpen, handleClose }: Props) => {
 	const onSubmit = (values: FormValues) => {
 		mutate(values);
 		// Optimistic update
-		handleClose();
-		reset();
+		handleCloseModal();
 	};
+
+	const handleCloseModal = useCallback(() => {
+		reset();
+		handleClose();
+	}, [handleClose, reset]);
 
 	const handleCloseSnackBar = (_event: React.SyntheticEvent | Event, reason?: string) => {
 		if (reason === 'clickaway') {

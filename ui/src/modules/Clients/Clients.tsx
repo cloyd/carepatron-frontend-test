@@ -11,17 +11,9 @@ import List from './List';
 
 const Clients = () => {
 	const { data, isLoading } = useClients();
+
 	const [searchQuery, setSearchQuery] = useState('');
-
 	const [isModalOpen, setModalOpen] = useState(false);
-
-	const handleOpen = useCallback(() => {
-		setModalOpen(true);
-	}, []);
-
-	const handleClose = useCallback(() => {
-		setModalOpen(false);
-	}, []);
 
 	const filteredClients = useMemo(
 		() =>
@@ -36,6 +28,14 @@ const Clients = () => {
 				: [],
 		[data, searchQuery]
 	);
+
+	const handleOpen = useCallback(() => {
+		setModalOpen(true);
+	}, []);
+
+	const handleClose = useCallback(() => {
+		setModalOpen(false);
+	}, []);
 
 	return (
 		<Page>
