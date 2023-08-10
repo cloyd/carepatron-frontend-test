@@ -6,7 +6,7 @@ export const LocaleContext = createContext('en');
 export const LocaleDispatchContext = createContext<Dispatch<SetStateAction<string>> | undefined>(undefined);
 
 export const LocaleProvider = ({ children }: { children: React.ReactNode }) => {
-	const [locale, setLocale] = useState(i18n.language);
+	const [locale, setLocale] = useState(i18n.language || 'en');
 
 	i18n.on('languageChanged', (lng) => {
 		setLocale(lng);
