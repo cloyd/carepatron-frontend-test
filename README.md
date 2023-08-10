@@ -26,10 +26,11 @@ This project is a client management application built using React and various li
 
 In addition to the provided tech stack, I have integrated the following technologies:
 
-- Zod for validation
-- React Hook Form for form management
-- React Query for server state management
-- Cypress for end-to-end testing
+- [Zod](https://zod.dev/) for validation
+- [React Hook Form](https://www.react-hook-form.com/) for form state management
+- [React Query](https://tanstack.com/query/latest/) for state management
+- [Cypress](https://www.cypress.io/) for end-to-end testing
+- [18next](https://www.i18next.com/) for internalization
 
 ## Getting Started
 
