@@ -16,31 +16,30 @@ const LocaleSelector = () => {
 	};
 
 	return (
-		<div>
-			<Box
-				sx={{
-					minWidth: 150,
-					position: 'fixed',
-					bottom: '20px',
-					right: '20px',
-				}}
-			>
-				<FormControl fullWidth>
-					<InputLabel id='language-selector'>Language</InputLabel>
-					<Select
-						labelId='language-selector'
-						id='langauge-selector'
-						value={locale}
-						label='Language'
-						onChange={handleChange}
-					>
-						<MenuItem value='en'>English</MenuItem>
-						<MenuItem value='fil'>Filipino</MenuItem>
-						<MenuItem value='fr'>French</MenuItem>
-					</Select>
-				</FormControl>
-			</Box>
-		</div>
+		<Box
+			sx={{
+				m: 1,
+				minWidth: 120,
+				position: 'fixed',
+				bottom: '20px',
+				right: '20px',
+			}}
+		>
+			<FormControl fullWidth size='small'>
+				<InputLabel id='language-selector'>Language</InputLabel>
+				<Select
+					labelId='language-selector'
+					id='langauge-selector'
+					value={locale}
+					label='Language'
+					onChange={handleChange}
+				>
+					<MenuItem value='en'>English</MenuItem>
+					<MenuItem value='fil'>Filipino</MenuItem>
+					<MenuItem value='fr'>French</MenuItem>
+				</Select>
+			</FormControl>
+		</Box>
 	);
 };
 
