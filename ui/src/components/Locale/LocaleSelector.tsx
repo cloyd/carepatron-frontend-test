@@ -30,7 +30,7 @@ const LocaleSelector = () => {
 				<Select
 					labelId='language-selector'
 					id='langauge-selector'
-					value={locale}
+					value={locale || 'en'}
 					label='Language'
 					onChange={handleChange}
 				>
