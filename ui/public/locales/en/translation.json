@@ -1,7 +1,7 @@
 {
 	"language": "English",
-	"client": "Client",
-	"createClient": "Create Client",
+	"clients": "Clients",
+	"createClient": "Create client",
 	"searchClient": "Search client",
 	"noClient": "No client",
 	"next": "Next",

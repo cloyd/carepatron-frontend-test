@@ -1,6 +1,6 @@
 {
 	"language": "French",
-	"client": "Client",
+	"clients": "Clientes",
 	"createClient": "Créer un client",
 	"searchClient": "Rechercher un client",
 	"noClient": "Aucun client",

@@ -10,7 +10,7 @@ describe('Main components', () => {
 
 		cy.get('h4').should('contain.text', 'Clients');
 		cy.get('[data-testid="search-input"]').should('exist').and('have.attr', 'type').and('eq', 'search');
-		cy.get('[data-testid="create-client-button"]').should('exist').and('contain.text', 'Create Client');
+		cy.get('[data-testid="create-client-button"]').should('exist').and('contain.text', 'Create client');
 		cy.get('[data-testid="client-list"]').should('exist');
 	});
 });

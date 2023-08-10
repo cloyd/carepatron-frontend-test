@@ -1,6 +1,6 @@
 {
 	"language": "Filipino",
-	"client": "Kliyente",
+	"clients": "Mga Kliyente",
 	"createClient": "Lumikha ng Kliyente",
 	"searchClient": "Maghanap ng kliyente",
 	"noClient": "Walang kliyente",

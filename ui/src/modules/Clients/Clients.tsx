@@ -43,7 +43,7 @@ const Clients = () => {
 	return (
 		<Page>
 			<Typography variant='h4' className='title'>
-				{t('client')}
+				{t('clients')}
 			</Typography>
 
 			<Stack direction='row' justifyContent='space-between' alignItems='center' spacing={2}>
