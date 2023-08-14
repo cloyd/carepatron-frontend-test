@@ -20,7 +20,7 @@ type Props = {
 export const ClientModal = ({ isOpen, handleClose }: Props) => {
 	const { t } = useTranslation();
 
-	const { mutate, isLoading, isSuccess } = useCreateClient();
+	const { mutate, isLoading, isSuccess, error } = useCreateClient();
 
 	const { notify } = useNotification();
 
@@ -44,10 +44,14 @@ export const ClientModal = ({ isOpen, handleClose }: Props) => {
 	}, [handleClose, reset]);
 
 	useEffect(() => {
-		if (formState.isSubmitSuccessful && !isLoading && isSuccess) {
-			notify('Successfully added new client', 'success');
+		if (formState.isSubmitSuccessful && !isLoading) {
+			if (isSuccess) {
+				notify('Successfully added new client', 'success');
+			} else if (error) {
+				notify('Something went wrong', 'error');
+			}
 		}
-	}, [isSuccess, isLoading, formState.isSubmitSuccessful, notify]);
+	}, [isSuccess, isLoading, formState.isSubmitSuccessful, error, notify]);
 
 	return (
 		<div data-testid='client-modal'>
