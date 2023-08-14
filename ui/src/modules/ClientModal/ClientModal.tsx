@@ -1,5 +1,5 @@
-import { useEffect, useState, useCallback, memo } from 'react';
-import { Dialog, DialogContent, DialogTitle, Snackbar, Alert, IconButton, Box } from '@mui/material';
+import { useEffect, useCallback, memo } from 'react';
+import { Dialog, DialogContent, DialogTitle, IconButton, Box } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -10,6 +10,7 @@ import { useCreateClient } from '@app/hooks';
 import Stepper from './Stepper';
 
 import { FormValues, FormSchema, defaultValues } from './constants';
+import { useNotification } from '@app/components/Notification';
 
 type Props = {
 	isOpen: boolean;
@@ -21,7 +22,7 @@ export const ClientModal = ({ isOpen, handleClose }: Props) => {
 
 	const { mutate, isLoading, isSuccess } = useCreateClient();
 
-	const [snackBarOpen, setSnackBarOpen] = useState(false);
+	const { notify } = useNotification();
 
 	const form = useForm<FormValues>({
 		mode: 'onBlur',
@@ -42,19 +43,11 @@ export const ClientModal = ({ isOpen, handleClose }: Props) => {
 		handleClose();
 	}, [handleClose, reset]);
 
-	const handleCloseSnackBar = (_event: React.SyntheticEvent | Event, reason?: string) => {
-		if (reason === 'clickaway') {
-			return;
-		}
-
-		setSnackBarOpen(false);
-	};
-
 	useEffect(() => {
 		if (formState.isSubmitSuccessful && !isLoading && isSuccess) {
-			setSnackBarOpen(true);
+			notify('Successfully added new client', 'success');
 		}
-	}, [isSuccess, isLoading, formState.isSubmitSuccessful]);
+	}, [isSuccess, isLoading, formState.isSubmitSuccessful, notify]);
 
 	return (
 		<div data-testid='client-modal'>
@@ -76,18 +69,6 @@ export const ClientModal = ({ isOpen, handleClose }: Props) => {
 					</form>
 				</FormProvider>
 			</Dialog>
-
-			{/* TODO: Move snackbar to its own component */}
-			<Snackbar
-				open={snackBarOpen}
-				onClose={handleCloseSnackBar}
-				autoHideDuration={6000}
-				anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-			>
-				<Alert onClose={handleCloseSnackBar} severity='success' sx={{ width: '100%' }}>
-					Successfully added new client
-				</Alert>
-			</Snackbar>
 		</div>
 	);
 };

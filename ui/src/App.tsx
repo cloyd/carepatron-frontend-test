@@ -6,6 +6,7 @@ import { green } from '@mui/material/colors';
 import LocaleProvider from '@app/components/Locale/Provider';
 import QueryProvider from '@app/util/QueryProvider';
 import Clients from '@app/modules/Clients';
+import NotificationProvider from '@app/components/Notification';
 
 import './App.css';
 
@@ -29,10 +30,12 @@ export default function App() {
 			<LocaleProvider>
 				<ThemeProvider theme={theme}>
 					<QueryProvider>
-						<Routes>
-							<Route path='/' element={<Clients />} />
-							<Route path='/Clients' element={<Clients />} />
-						</Routes>
+						<NotificationProvider>
+							<Routes>
+								<Route path='/' element={<Clients />} />
+								<Route path='/Clients' element={<Clients />} />
+							</Routes>
+						</NotificationProvider>
 						<ReactQueryDevtools />
 					</QueryProvider>
 				</ThemeProvider>
