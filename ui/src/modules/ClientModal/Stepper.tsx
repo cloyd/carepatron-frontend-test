@@ -18,7 +18,7 @@ type FormFields = {
 
 const formFields: FormFields = {
 	0: ['firstName', 'lastName'],
-	1: ['email', 'phoneNumber'],
+	1: ['email', 'phoneNumber', 'emergencyPhoneNumber'],
 };
 
 type Props = {
@@ -35,8 +35,11 @@ const Stepper = ({ onSubmit }: Props) => {
 	const isFinalStep = activeStep + 1 === steps.length;
 
 	const handleNext = async () => {
+		console.log('activeStep', activeStep);
+
 		if (!isFinalStep) {
 			const isValid = await trigger(formFields[activeStep]);
+
 			if (isValid) {
 				setActiveStep((prevActiveStep) => prevActiveStep + 1);
 			}
@@ -71,6 +74,7 @@ const Stepper = ({ onSubmit }: Props) => {
 						<Stack spacing={2}>
 							<FormInput name='firstName' label={t('firstName')} />
 							<FormInput name='lastName' label={t('lastName')} />
+							<FormInput name='nationalId' label={t('nationalId')} />
 						</Stack>
 					)}
 
@@ -78,6 +82,7 @@ const Stepper = ({ onSubmit }: Props) => {
 						<Stack spacing={2}>
 							<FormInput name='email' label={t('email')} type='email' />
 							<FormInput name='phoneNumber' label={t('phoneNumber')} />
+							<FormInput name='emergencyPhoneNumber' label={t('emergencyPhoneNumber')} />
 						</Stack>
 					)}
 				</Box>

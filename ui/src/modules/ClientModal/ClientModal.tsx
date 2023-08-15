@@ -6,11 +6,10 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslation } from 'react-i18next';
 
 import { useCreateClient } from '@app/hooks';
+import { useNotification } from '@app/components/Notification';
 
 import Stepper from './Stepper';
-
 import { FormValues, FormSchema, defaultValues } from './constants';
-import { useNotification } from '@app/components/Notification';
 
 type Props = {
 	isOpen: boolean;
