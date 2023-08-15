@@ -11,6 +11,8 @@
 	"name": "Name",
 	"phoneNumber": "Phone number",
 	"email": "Email",
+	"nationalId": "National Health ID",
+	"emergencyPhoneNumber": "Emergency Phone number",
 	"modal": {
 		"title": "Create new client",
 		"steps": {

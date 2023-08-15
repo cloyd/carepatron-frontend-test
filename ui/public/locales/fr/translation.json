@@ -11,6 +11,8 @@
 	"name": "Nom",
 	"phoneNumber": "Numéro de téléphone",
 	"email": "E-mail",
+	"nationalId": "Carte nationale d'identité sanitaire",
+	"emergencyPhoneNumber": "Numéro de téléphone d'urgence",
 	"modal": {
 		"title": "Créer un nouveau client",
 		"steps": {

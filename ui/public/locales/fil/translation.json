@@ -11,6 +11,8 @@
 	"name": "Pangalan",
 	"phoneNumber": "Numero ng telepono",
 	"email": "Email",
+	"nationalId": "National Health ID",
+	"emergencyPhoneNumber": "Numero ng Emergency na Telepono",
 	"modal": {
 		"title": "Lumikha ng bagong kliyente",
 		"steps": {
